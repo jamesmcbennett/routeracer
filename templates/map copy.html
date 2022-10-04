@@ -1,0 +1,190 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Map
+{% endblock %}
+
+{% block main %}
+    <h1>Map</h1>
+    <head>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcv8LYx8fy-TxbfIGN19LBcrZ0SvqT2Bo&libraries=geometry">
+        </script>
+        <script>
+            function initMap(): void {
+                const map = new google.maps.Map(
+                document.getElementById("map") as HTMLElement,
+                {
+                    // Set Zoom and Center Map
+                    zoom: 7,
+                    center: { lat: 41.676668, lng: -71.702101 },
+                    mapTypeId: "terrain",
+                }
+                );
+
+                // Set the route using lat/lng. Collected values in a spreadsheet
+                // This could be more automated in future.
+                var waypoints = [
+                { lat: 41.327613, lng: -73.104095 },
+                { lat: 41.325105, lng: -73.100609 },
+                { lat: 41.323112, lng: -73.098 },
+                { lat: 41.321359, lng: -73.094004 },
+                { lat: 41.318545, lng: -73.090525 },
+                { lat: 41.314418, lng: -73.086164 },
+                { lat: 41.312601, lng: -73.079897 },
+                { lat: 41.310742, lng: -73.078381 },
+                { lat: 41.307393, lng: -73.077244 },
+                { lat: 41.303774, lng: -73.072651 },
+                { lat: 41.299683, lng: -73.066426 },
+                { lat: 41.295962, lng: -73.065355 },
+                { lat: 41.289886, lng: -73.06835 },
+                { lat: 41.2866, lng: -73.073214 },
+                { lat: 41.281443, lng: -73.084341 },
+                { lat: 41.275193, lng: -73.087173 },
+                { lat: 41.268647, lng: -73.088846 },
+                { lat: 41.261936, lng: -73.088146 },
+                { lat: 41.252604, lng: -73.087043 },
+                { lat: 41.244288, lng: -73.094133 },
+                { lat: 41.235123, lng: -73.101992 },
+                { lat: 41.231474, lng: -73.108267 },
+                { lat: 41.221373, lng: -73.112718 },
+                { lat: 41.211689, lng: -73.110479 },
+                { lat: 41.199582, lng: -73.110591 },
+                { lat: 41.187307, lng: -73.121541 },
+                { lat: 41.177994, lng: -73.121952 },
+                { lat: 41.167241, lng: -73.102698 },
+                { lat: 41.200723, lng: -73.010652 },
+                { lat: 41.236425, lng: -72.890668 },
+                { lat: 41.237332, lng: -72.760265 },
+                { lat: 41.242939, lng: -72.671764 },
+                { lat: 41.259432, lng: -72.638261 },
+                { lat: 41.260142, lng: -72.578029 },
+                { lat: 41.24239, lng: -72.545682 },
+                { lat: 41.251106, lng: -72.38344 },
+                { lat: 41.282988, lng: -72.060779 },
+                { lat: 41.305489, lng: -71.913612 },
+                { lat: 41.291326, lng: -71.866059 },
+                { lat: 41.315859, lng: -71.748782 },
+                { lat: 41.36363, lng: -71.556096 },
+                { lat: 41.351799, lng: -71.480908 },
+                { lat: 41.437114, lng: -71.412333 },
+                { lat: 41.441457, lng: -71.296384 },
+                { lat: 41.46861, lng: -71.285592 },
+                { lat: 41.470429, lng: -71.20064 },
+                { lat: 41.444865, lng: -71.206781 },
+                { lat: 41.444349, lng: -71.176428 },
+                { lat: 41.486523, lng: -71.121754 },
+                { lat: 41.493439, lng: -71.048391 },
+                { lat: 41.473233, lng: -71.040202 },
+                { lat: 41.476059, lng: -71.022824 },
+                { lat: 41.510306, lng: -70.950017 },
+                { lat: 41.53714, lng: -70.911746 },
+                { lat: 41.582892, lng: -70.914514 },
+                { lat: 41.585712, lng: -70.866673 },
+                { lat: 41.5737, lng: -70.853692 },
+                { lat: 41.579055, lng: -70.810969 },
+                { lat: 41.625052, lng: -70.77835 },
+                { lat: 41.686131, lng: -70.675948 },
+                { lat: 41.735509, lng: -70.626044 },
+                { lat: 41.74112, lng: -70.616231 },
+                { lat: 41.746092, lng: -70.595333 },
+                { lat: 41.75187, lng: -70.580752 },
+                { lat: 41.759957, lng: -70.570619 },
+                { lat: 41.768228, lng: -70.565711 },
+                { lat: 41.772341, lng: -70.559831 },
+                { lat: 41.775911, lng: -70.549128 },
+                { lat: 41.775, lng: -70.533181 },
+                { lat: 41.77283, lng: -70.511993 },
+                { lat: 41.779417, lng: -70.48622 },
+                { lat: 41.796267, lng: -70.511829 },
+                { lat: 41.815869, lng: -70.533365 },
+                { lat: 41.830639, lng: -70.531925 },
+                { lat: 41.859295, lng: -70.520216 },
+                { lat: 41.870951, lng: -70.524846 },
+                { lat: 41.892288, lng: -70.525576 },
+                { lat: 41.911354, lng: -70.541206 },
+                { lat: 41.920619, lng: -70.532523 },
+                { lat: 41.933118, lng: -70.536876 },
+                { lat: 41.954997, lng: -70.583679 },
+                { lat: 41.949806, lng: -70.620168 },
+                { lat: 41.995306, lng: -70.620956 },
+                { lat: 42.002505, lng: -70.58709 },
+                { lat: 42.055505, lng: -70.636157 },
+                { lat: 42.084728, lng: -70.629691 },
+                { lat: 42.099397, lng: -70.640695 },
+                { lat: 42.186807, lng: -70.707466 },
+                { lat: 42.211177, lng: -70.708691 },
+                { lat: 42.22941, lng: -70.745009 },
+                { lat: 42.24488, lng: -70.746827 },
+                { lat: 42.249628, lng: -70.754682 },
+                { lat: 42.255501, lng: -70.756934 },
+                { lat: 42.262766, lng: -70.772947 },
+                { lat: 42.26111, lng: -70.784869 },
+                { lat: 42.274066, lng: -70.823094 },
+                { lat: 42.276732, lng: -70.851642 },
+                { lat: 42.314404, lng: -70.879009 },
+                { lat: 42.309946, lng: -70.9291 },
+                { lat: 42.309028, lng: -70.979639 },
+                { lat: 42.321323, lng: -70.994864 },
+                { lat: 42.343097, lng: -71.007161 },
+                { lat: 42.361305, lng: -71.042528 },
+                { lat: 42.370569, lng: -71.047978 },
+                { lat: 42.369203, lng: -71.058939 },
+                { lat: 42.368786, lng: -71.06053 },
+                { lat: 42.368549, lng: -71.062295 },
+                { lat: 42.369055, lng: -71.06479 },
+                { lat: 42.368741, lng: -71.066482 },
+                { lat: 42.36759, lng: -71.068772 },
+                { lat: 42.366005, lng: -71.070228 },
+                { lat: 42.364913, lng: -71.074079 },
+                { lat: 42.35841, lng: -71.078385 },
+                { lat: 42.35245, lng: -71.104457 },
+                { lat: 42.352913, lng: -71.11329 },
+                { lat: 42.355742, lng: -71.116997 },
+                { lat: 42.359703, lng: -71.116476 },
+                { lat: 42.367215, lng: -71.117135 },
+                { lat: 42.368812, lng: -71.118942 },
+                { lat: 42.368588, lng: -71.122199 },
+                { lat: 42.369427, lng: -71.1244 },
+                { lat: 42.369851, lng: -71.125368 }
+                ];
+
+                // Style the route.
+                var polyline = new google.maps.Polyline({
+                path: waypoints,
+                geodesic: true,
+                strokeColor: "blue",
+                strokeOpacity: 1.0,
+                strokeWeight: 3,
+                });
+
+                var path = polyline.getPath;
+                var dist = google.maps.geometry.spherical.computeLength(path);
+                document.getElementById('results').innerHTML += "Polyline is " + dist + " meters long<br>";
+
+
+                polyline.setMap(map);
+            }
+
+            declare global {
+                interface Window {
+                initMap: () => void;
+                }
+            }
+            window.initMap = initMap;
+            export {};
+        </script>
+    </head>
+    <body>
+        <div id="map"></div>
+        <div id="results"></div>
+
+        <!--
+        The `defer` attribute causes the callback to execute after the full HTML
+        document has been parsed. For non-blocking uses, avoiding race conditions,
+        and consistent behavior across browsers, consider loading using Promises
+        with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+        -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcv8LYx8fy-TxbfIGN19LBcrZ0SvqT2Bo&callback=initMap&v=weekly" defer></script>
+    </body>
+{% endblock %}

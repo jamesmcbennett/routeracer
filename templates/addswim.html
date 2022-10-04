@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Swim
+{% endblock %}
+
+{% block main %}
+    <h1>Add Swim</h1>
+        <div class="container">
+            <form action="/addswim" method="post">
+                <div class="form-group">
+                    <select class="form-control form-control-lg" name="race">
+                        <option disabled selected value="">Select Race</option>
+                        {% for race in races %}
+                            <option value={{race}}>{{race}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Add meters to swim route</label>
+                    <span class="input-group-text">Meters</span>
+                    <input class="form-control form-control-lg" autocomplete="off" placeholder="e.g. 1500" min="1" name="meters" type="number">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-outline-danger btn-lg" type="submit">Add</button>
+                </div>
+            </form>
+        </div>
+{% endblock %}

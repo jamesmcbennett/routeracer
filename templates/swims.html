@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Swims
+{% endblock %}
+
+{% block main %}
+    <h1>{{username}}'s Progress</h1>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Race</th>
+                <th scope="col">Kilometers Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for totalswim in totalswims %}
+            <tr>
+                <td>{{totalswim["race_name"]}}</td>
+                <td>{{totalswim["totalkilometers"]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Swims</h1>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Race</th>
+                    <th scope="col">Date/Time</th>
+                    <th scope="col">Meters</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for swim in swims %}
+                <tr>
+                    <td>{{swim["race_name"]}}</td>
+                    <td>{{swim["time_stamp"]}}</td>
+                    <td>{{swim["meters"]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

@@ -1,0 +1,60 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+    font-weight: bold;
+    color: crimson !important;
+    font-family: monospace !important;
+}
+
+nav .navbar-nav
+{
+    font-weight: bold;
+    font-family: monospace !important;
+}
+
+#map {
+    height: 500px !important;
+    width: 100% !important;
+  }
+
+.h1, h1 {
+    padding-bottom: 2rem;
+    color: crimson;
+}
+
+h1:first-letter {
+    text-transform:capitalize;
+}
+
+.btn {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+ .form-control:focus {
+        border-color: crimson;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(220, 20, 60, 0.5);
+    }
+
+label {
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.3rem;
+    color: darkred;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+a {
+        color: darkred;
+}

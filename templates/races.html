@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Races
+{% endblock %}
+
+{% block main %}
+<h1>Races</h1>
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Race ID</th>
+            <th scope="col">Race</th>
+            <th scope="col">Start</th>
+            <th scope="col">Finish</th>
+            <th scope="col">Distance</th>
+            <th scope="col">When</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for race in races %}
+        <tr>
+            <td>{{race["id"]}}</td>
+            <td>{{race["race_name"]}}</td>
+            <td>{{race["start"]}}</td>
+            <td>{{race["finish"]}}</td>
+            <td>{{race["distance"]}}</td>
+            <td>{{race["time"]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
